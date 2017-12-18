@@ -39,3 +39,8 @@ test
 ```
 curl -XGET '127.0.0.1:9200/shakespeare/_search?pretty' -d '{"query":{"match_pharse":{"text_entry："to be"}}}'
 ```
+
+### Create a Mapping for MovieLens
+```
+curl -XPUT 127.0.0.1:9200/movies -d '{ "mappings" :{"movie":{"_all":{"enabled":false},"properties":{"year":{"type":"date"}}}}}'
+```
