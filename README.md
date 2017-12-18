@@ -54,3 +54,13 @@ curl -XGET 127.0.0.1:9200/movies/_mapping/movie?pretty
 curl -XPUT localhost:9200/movies/movie/10999 -d '{ "genre":["MAX"],"title":"inter","year":2000}'
 curl -XGET localhost:9200/movies/movie/_search?pretty
 ```
+### Insert Many Movies at Once
+```
+wget http://media.sundog-soft.com/es/movies.json
+curl -XPUT localhost:9200/_bulk?pretty --data-binary @movies.json
+```
+sample entry:
+```
+{"create":{"_index":"movies","_type":"movie","_id":"123"}}
+{"id":"123","title":"","year":1234,"genre":[""]}
+```
