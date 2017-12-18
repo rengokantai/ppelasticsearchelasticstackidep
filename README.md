@@ -44,3 +44,13 @@ curl -XGET '127.0.0.1:9200/shakespeare/_search?pretty' -d '{"query":{"match_phar
 ```
 curl -XPUT 127.0.0.1:9200/movies -d '{ "mappings" :{"movie":{"_all":{"enabled":false},"properties":{"year":{"type":"date"}}}}}'
 ```
+test
+```
+curl -XGET 127.0.0.1:9200/movies/_mapping/movie?pretty
+```
+
+### Import a Single Movie via JSON REST
+```
+curl -XPUT localhost:9200/movies/movie/10999 -d '{ "genre":["MAX"],"title":"inter","year":2000}'
+curl -XGET localhost:9200/movies/movie/_search?pretty
+```
