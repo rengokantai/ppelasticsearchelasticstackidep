@@ -198,3 +198,31 @@ curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{ "query":{"wildcard":
 ```
 curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{ "query":{"match_phrase_prefix":{"title":{"query":"star trek",slop:2}}}}'
 ```
+
+#### 03:50
+index n-grams
+```
+{
+  "settings":{
+    "analysis":{
+      "filter":{
+        "autocomplete_filter":{
+          "type":"edge_ngram",
+          "min_gram":1,
+          "max_gram":10
+        }
+      },
+      "analyzer":{
+        "autocomplete":{
+          "type":"custom",
+          "tokenizer":"standard",
+          "filter":[
+            "lowercase",
+            "autocomplete_filter"
+          ]
+        }
+      }
+    }
+  }
+}
+```
