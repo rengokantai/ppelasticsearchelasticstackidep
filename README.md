@@ -111,3 +111,55 @@ curl -XGET "127.0.0.1:9200/movies/movie/_search?q=+year:>2010+title:trek&pretty"
 ```
 curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d ' { "query":{"bool":{"must":{"term":{"title":"trek"}},"filter":{"range":{"year":{"gte":2000}}}}}}'
 ```
+terms
+```
+term
+terms
+range
+exists
+missing
+bool
+``` 
+```
+match
+match_all
+multi_match
+```
+
+
+```
+match --- match one word
+match_phrase --- exact match
+```
+
+
+### Pagination
+may kill performance
+```
+curl -XGET '127.0.0.1:9200/movies/movie/_search?size=2&from=2&pretty'
+```
+
+### Sorting
+A string field that is analyzed for full-text search can't be used to sort documents
+
+##### If you need to sort on an analyzed field, map a not_analyzed copy
+```
+-d
+'{
+"mappings":"movie":{
+  "_all":{"enabled":false},
+  "properties":{
+    "title":{
+      "type":"string",
+      "fields":{
+        "raw":{
+          "type":"string",
+          "index":"not_analyzed"
+        }
+      }
+    }
+  }
+}
+}}'
+```
+```
