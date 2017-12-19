@@ -64,3 +64,13 @@ sample entry:
 {"create":{"_index":"movies","_type":"movie","_id":"123"}}
 {"id":"123","title":"","year":1234,"genre":[""]}
 ```
+
+### Updating Data in Elasticsearch
+```
+curl -XPOST localhost:9200/movies/movie/10999/_update -d '{"doc":{"title":"new"}}'
+```
+
+### Deleting Data in Elasticsearch
+```
+curl -XGET localhost:9200/movies/_search?q=Dark
+```
