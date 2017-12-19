@@ -94,3 +94,9 @@ recreate mapping
 ```
 curl -XPUT 127.0.0.1:9200/movies -d '{ "mappings" :{"movie":{"_all":{"enabled":false},"properties":{"year":{"type":"date"},"genre":{"type":"string","index":"not_analyzed"}}}}'  # must exact match, case sensitive
 ```
+
+### Data Modeling with Elasticsearch
+__requires update__
+```
+
+```
