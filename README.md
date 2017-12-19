@@ -181,3 +181,8 @@ curl -XGET '127.0.0.1:9200/movies/movie/_search?sort=title.raw&pretty'
 }
 '
 ```
+
+### Fuzzy Queries
+```
+curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{ "query":{"fuzzy":{"title":{"value":"worrd",fuzziness:2}}}}'
+```
