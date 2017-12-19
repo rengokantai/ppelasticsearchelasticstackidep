@@ -226,3 +226,12 @@ index n-grams
   }
 }
 ```
+
+```
+curl -XGET '127.0.0.1:9200/movies/_analyze?analyzer=autocomplete&pretty' -d 'Sta'
+```
+#### 11:39 
+standard analyzer
+```
+{"query":{"match":{"title":{"query":"sta","analyzer":"standard"}}}}
+```
