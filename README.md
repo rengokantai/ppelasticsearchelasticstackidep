@@ -74,3 +74,14 @@ curl -XPOST localhost:9200/movies/movie/10999/_update -d '{"doc":{"title":"new"}
 ```
 curl -XGET localhost:9200/movies/_search?q=Dark
 ```
+
+
+### Dealing With Concurrently
+```
+curl -XPUT localhost:9200/movies/movie/10999?version=3 -d '{"genre":["MIN"],"year":2018}'
+```
+
+update with retry_on_confilct
+```
+curl -XPUT localhost:9200/movies/movie/10999/_update?retry_on_conflict -d '{"doc":{"genre":["MIN"],"year":2018}}'
+```
