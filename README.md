@@ -186,3 +186,15 @@ curl -XGET '127.0.0.1:9200/movies/movie/_search?sort=title.raw&pretty'
 ```
 curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{ "query":{"fuzzy":{"title":{"value":"worrd",fuzziness:2}}}}'
 ```
+
+### Partial Matching
+prefix, wildcard
+```
+curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{ "query":{"wildcard":{"year":19**}}}'
+```
+
+### N-Grams, and Search as You Type
+##### query-time search as-you-type
+```
+curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{ "query":{"match_phrase_prefix":{"title":{"query":"star trek",slop:2}}}}'
+```
