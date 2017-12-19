@@ -162,4 +162,22 @@ A string field that is analyzed for full-text search can't be used to sort docum
 }
 }}'
 ```
+when sorting, use `raw` field
+```
+curl -XGET '127.0.0.1:9200/movies/movie/_search?sort=title.raw&pretty'
+```
+
+### Using Filters
+```
+'
+{
+  "query":{
+    "bool":{
+      "must":{"match":{"genre":""}},
+      "must_not":{"match":{"title":"trek"}},
+      "filter":{"range":{"year":{"gte":2000,"lt":2011}}}
+    }
+  }
+}
+'
 ```
