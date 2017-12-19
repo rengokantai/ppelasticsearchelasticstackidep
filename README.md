@@ -97,7 +97,17 @@ curl -XPUT 127.0.0.1:9200/movies -d '{ "mappings" :{"movie":{"_all":{"enabled":f
 
 ### Data Modeling with Elasticsearch
 __requires update__
+
+## 3
+### Search
 This is not working, must be encrypted. + means boolean `and`
 ```
 curl -XGET "127.0.0.1:9200/movies/movie/_search?q=+year:>2010+title:trek&pretty"
+```
+
+
+
+### Using JSON Search
+```
+curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d ' { "query":{"bool":{"must":{"term":{"title":"trek"}},"filter":{"range":{"year":{"gte":2000}}}}}}'
 ```
