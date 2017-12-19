@@ -85,3 +85,12 @@ update with retry_on_confilct
 ```
 curl -XPUT localhost:9200/movies/movie/10999/_update?retry_on_conflict -d '{"doc":{"genre":["MIN"],"year":2018}}'
 ```
+
+### Using Analyzers and Tokenizers
+```
+curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty -d '{"query":{"match":{"title":"Star Trek"}}}'
+```
+recreate mapping
+```
+curl -XPUT 127.0.0.1:9200/movies -d '{ "mappings" :{"movie":{"_all":{"enabled":false},"properties":{"year":{"type":"date"},"genre":{"type":"string","index":"not_analyzed"}}}}'  # must exact match, case sensitive
+```
