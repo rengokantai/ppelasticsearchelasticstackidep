@@ -265,4 +265,8 @@ python3 IndexRatings.py
 ```
 vim /etc/logstash/conf.d/logstash.conf
 ```
+
+```
+cd /usr/share/logstash
+bin/logstash --path.settings=/etc/logstash -t(test)
 ```
