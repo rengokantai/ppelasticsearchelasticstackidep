@@ -294,3 +294,19 @@ releaseDate date
 )
 load data local infile 'item' into table movielens.movies fields terminated by '|' (movieID,title,@var3) set releaseDate = STR_TO_DATE(@var3,'%d-%M-%Y);
 ```
+
+
+
+### Buckets and Metrics
+```
+curl -XGET 'localhost:9200/ratings.rating/_search?size=0tty' -d '
+{
+  "aggs":{
+    "ratings":{
+      "terms":{
+        "field":"rating"
+      }
+    }
+  }
+}'
+```
