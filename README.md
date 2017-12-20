@@ -422,4 +422,10 @@ vim /etc/filebeat/filebeat.yml
 ```
 edit
 ```
+filebeat.modules:
+- module: apache2
+  access:
+    var.paths: ["/etc/elasticsearch/access*"]
+  error:
+    var.paths: ["/etc/elasticsearch/error*]
 ```
