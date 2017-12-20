@@ -405,3 +405,21 @@ edit
 server.host 0.0.0.0
 xpack.security.enabled: false
 ```
+
+
+### The ELK Stack and Elastic Stack
+logfiles->filebeat->logstash->es->kibana  
+filebeat maintains a read pointer on the logs. every log line acts like a queue  
+It get more flexibility on scaling your cluster
+
+### Install, Configure, and Use FileBeat
+```
+apt install filebeat
+bin/elasticsearch-plugin install ingest-geoip
+bin/elasticsearch-plugin install ingest-user-agent
+systemctl restart elasticsearch
+vim /etc/filebeat/filebeat.yml
+```
+edit
+```
+```
