@@ -235,3 +235,24 @@ standard analyzer
 ```
 {"query":{"match":{"title":{"query":"sta","analyzer":"standard"}}}}
 ```
+
+
+Importing Data from Scripts
+download
+```
+wget http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+unzip ml-latest-small.zip
+wget media.sundog-soft.com/es/MoviesToJson.py
+python3 MoviesToJson.py > moremovies.json
+```
+
+purge and import
+```
+curl -XDELETE localhost:9200/movies
+curl -XPUT localhost:9200/_bulk --data-binary @moremovies.json
+```
+
+```
+apt install python3-pip
+pip3 install elasticsearch
+```
