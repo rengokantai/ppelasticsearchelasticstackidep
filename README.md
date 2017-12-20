@@ -392,3 +392,16 @@ curl -XGET 'localhost:9200/ratings.rating/_search?size=0?pretty' -d '
   }
 }
 ```
+
+
+
+### Installing Kibana
+```
+apt install kibana
+vim /etc/kibana/kibana.yml
+```
+edit
+```
+server.host 0.0.0.0
+xpack.security.enabled: false
+```
