@@ -459,3 +459,25 @@ edit
 ```
 xpack.security.enabled: false
 ```
+
+### Integrating Amazon ES with Logstash
+```
+input {
+  file {
+    path => ""
+  }
+}
+output {
+  amazon_es {
+    hosts => ["search-..amazonaws.com"]
+    region => "us-east-1"
+    aws_access_key_id =>""
+    aws_secret_access_key =>""
+    index =>""
+  }
+}
+```
+
+```
+/usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es
+```
