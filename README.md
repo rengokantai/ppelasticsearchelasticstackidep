@@ -266,11 +266,31 @@ python3 IndexRatings.py
 vim /etc/logstash/conf.d/logstash.conf   (need to add this file by hand)
 ```
 
+
+### Importing Apache Access Logs with Logstash
 ```
 cd /usr/share/logstash
 bin/logstash --path.settings=/etc/logstash -t(test)
 ```
-this syntax is incorrect!!
+__this syntax is incorrect!!__
 ```
 bin/logstash -f /etc/logstash/conf.d/logstash.conf
+```
+
+v means show results as list
+```
+curl -XGET localhost:9200/_cat/indices?v
+curl -XGET localhost:9200/logstash-2017.05.02/_search?pretty'
+```
+
+
+### Import Data from MySQL using Logstash
+```
+create database moveielens;
+create tablemovielens.movies (
+movieID int primary key not null,
+title text,
+releaseDate date
+)
+load data local infile 'item' into table movielens.movies fields terminated by '|' (movieID,title,@var3) set releaseDate = STR_TO_DATE(@var3,'%d-%M-%Y);
 ```
