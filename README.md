@@ -346,3 +346,49 @@ curl -XGET 'localhost:9200/ratings.rating/_search?size=0?pretty' -d '
   }
 }'
 ```
+
+### Histograms
+```
+ "aggs":{
+    "whole_ratings":{
+      "histogram":{
+        "field":"rating",
+        "interval":1.0
+      }
+    }
+  }
+```
+
+### Aggregrating Time Series Data
+```
+{
+  "aggs":{
+    "timestamp":{
+      "date_histogram":{
+        "field":"@timestamp",
+        "interval":"hour"
+      }
+   }
+  }
+}
+```
+
+### [Exercise] When Did my Site Go Down
+```
+
+{
+  "query":{
+    "match":{
+      "response":"500"
+    }
+  },
+  "aggs":{
+    "timestamp":{
+      "date_histogram":{
+        "field":"@timestamp",
+        "interval":"hour"
+      }
+   }
+  }
+}
+```
