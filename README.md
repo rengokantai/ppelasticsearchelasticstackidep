@@ -260,3 +260,9 @@ pip3 install elasticsearch
 wget http://media.sundog-soft.com/es/IndexRatings.py
 python3 IndexRatings.py
 ```
+
+### Installing Logstash
+```
+vim /etc/logstash/conf.d/logstash.conf
+```
+```
