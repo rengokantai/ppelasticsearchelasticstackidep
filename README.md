@@ -446,3 +446,16 @@ PUT /new_index
 ```
 export ES_HEAP_SIZE=10g
 ```
+
+### Monitering with X-Pack
+```
+bin/elasticsearch-plugin install x-pack
+bin/kibana-plugin install x-pack
+```
+```
+vim /etc/elasticsearch/elasticsearch.yml
+```
+edit
+```
+xpack.security.enabled: false
+```
