@@ -441,3 +441,8 @@ PUT /new_index
   }
 }
 ```
+
+### Heap Sizing
+```
+export ES_HEAP_SIZE=10g
+```
