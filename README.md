@@ -429,3 +429,15 @@ filebeat.modules:
   error:
     var.paths: ["/etc/elasticsearch/error*]
 ```
+
+
+### Scaling with New Indices
+```
+PUT /new_index
+{
+  "settings":{
+    "number_of_shards":10,
+    "number_of_replicas":1
+  }
+}
+```
