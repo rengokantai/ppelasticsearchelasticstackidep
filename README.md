@@ -299,11 +299,47 @@ load data local infile 'item' into table movielens.movies fields terminated by '
 
 ### Buckets and Metrics
 ```
-curl -XGET 'localhost:9200/ratings.rating/_search?size=0tty' -d '
+curl -XGET 'localhost:9200/ratings.rating/_search?size=0&pretty' -d '
 {
   "aggs":{
     "ratings":{
       "terms":{
+        "field":"rating"
+      }
+    }
+  }
+}'
+```
+count only 5-star ratings
+```
+curl -XGET 'localhost:9200/ratings.rating/_search?size=0?pretty' -d '
+{ 
+  "query":{
+    "match":{
+      "rating":5.0
+    }
+  },
+  "aggs":{
+    "ratings":{
+      "terms":{
+        "field":"rating"
+      }
+    }
+  }
+}'
+```
+create a average rating
+```
+curl -XGET 'localhost:9200/ratings.rating/_search?size=0?pretty' -d '
+{ 
+  "query":{
+    "match_phrase":{
+      "title":"star"
+    }
+  },
+  "aggs":{
+    "avg_rating":{
+      "avg":{
         "field":"rating"
       }
     }
