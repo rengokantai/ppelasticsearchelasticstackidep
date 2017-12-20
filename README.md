@@ -263,10 +263,14 @@ python3 IndexRatings.py
 
 ### Installing Logstash
 ```
-vim /etc/logstash/conf.d/logstash.conf
+vim /etc/logstash/conf.d/logstash.conf   (need to add this file by hand)
 ```
 
 ```
 cd /usr/share/logstash
 bin/logstash --path.settings=/etc/logstash -t(test)
+```
+this syntax is incorrect!!
+```
+bin/logstash -f /etc/logstash/conf.d/logstash.conf
 ```
