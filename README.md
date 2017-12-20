@@ -256,3 +256,7 @@ curl -XPUT localhost:9200/_bulk --data-binary @moremovies.json
 apt install python3-pip
 pip3 install elasticsearch
 ```
+```
+wget http://media.sundog-soft.com/es/IndexRatings.py
+python3 IndexRatings.py
+```
